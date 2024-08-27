@@ -23,4 +23,19 @@ spec:
       containers:
       - name: mongodb
         image: praveenkothapally/mongodb:1.0.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+spec:
+  selector: #below are lables from above pod 
+    app: mongodb
+    tier: db
+    project: roboshop
+  ports:
+  - name: mongodb-port 
+    protocol: TCP
+    port: 27017 # this port belogs to service
+    targetPort: 27017 # this port belongs to container
         
